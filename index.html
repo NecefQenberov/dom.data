@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+      table {
+        font-family: roboto;
+      }
+
+      table {
+        border-collapse: collapse;
+      }
+
+      th {
+        background-color: blueviolet;
+        color: #fff;
+        padding: 8px 3px;
+      }
+
+      tr:nth-child(odd) {
+        background: #ccc;
+      }
+
+      td {
+        padding: 6px 3px;
+        border: 1px solid rgba(49, 49, 49, 0);
+      }
+      table {
+        margin: auto;
+        width: 40%;
+      }
+      button{
+        width: 60px;
+        height:40px;
+        background-color: black;
+        border: 1px solid;
+        color: #fff;
+        border-radius: 20%;
+        box-shadow: 10px 10px 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <button><i class="fa-regular fa-moon"></i></button>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>NAME</th>
+          <th>TICKER</th>
+          <th>VALUE</th>
+          <th>CHANGE</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <script src="./main.js"></script>
+  </body>
+</html>
