@@ -91,27 +91,101 @@ const data = [
     }
 ];
 const tbody = document.querySelector("tbody")
-data.forEach(item => {
-    tbody.innerHTML += `
+render()
+function render() {
+    data.forEach(item => {
+        tbody.innerHTML += `
     <tr>
       <td>${item.name}</td>
       <td>${item.ticker}</td>
       <td>${item.value}</td>
       <td class="${item.change.slice(0, -1) > 0 ? 'text-[green]' : 'text-[red]'}">${item.change}</td>
     </tr>`
+    })
+}
+
+const nameBtn = document.getElementById("nameBtn")
+const changeBtn = document.getElementById("changeBtn")
+let isSorted = false
+nameBtn.addEventListener("click", () => {
+    if (!isSorted) {
+        data.sort((a, b) => {
+            return a.name.localeCompare(b.name)
+        })
+        nameBtn.innerHTML = `NAME <i class="fa-solid fa-arrow-down-a-z"></i>`
+        isSorted = true
+    } else {
+        data.sort((b, a) => {
+            return a.name.localeCompare(b.name)
+        })
+        nameBtn.innerHTML = `NAME <i class="fa-solid fa-arrow-up-a-z"></i>`
+        isSorted = false
+    }
+    tbody.innerHTML = ""
+    render()
 })
 
+changeBtn.addEventListener("click", () => {
+    if (!isSorted) {
+        data.sort((a, b) => {
+            let Aval = a.change.replace("%", "") * 1
+            let Bval = b.change.replace("%", "") * 1
+            return Aval - Bval
+        })
+
+        changeBtn.innerHTML = `CHANGE <i class="fa-solid fa-arrow-up-9-1"></i>`
+        isSorted = true
+    } else {
+        data.sort((b, a) => {
+            let Aval = a.change.replace("%", "") * 1
+            let Bval = b.change.replace("%", "") * 1
+            return Aval - Bval
+        })
+        changeBtn.innerHTML = `CHANGE <i class="fa-solid fa-arrow-down-9-1"></i>`
+        isSorted = false
+    }
+    tbody.innerHTML = ""
+    render()
+})
 // MOD BTN
 let isMode = false;
-const btn=document.querySelector("button")
-btn.addEventListener("click",  ()=>{
-    if(!isMode){
-        document.body.style.backgroundColor ="grey"
-        btn.innerHTML=`<i class="fa-regular fa-sun"></i>`
-        isMode =true
-    }else{
-         document.body.style.backgroundColor ="white"
-        btn.innerHTML=`<i class="fa-regular fa-moon"></i>`
-        isMode =false
+const btn = document.querySelector("button")
+const tableElem = document.querySelector("table")
+const icon = document.getElementById("moon")
+const icon2 = document.getElementById("sun")
+
+btn.addEventListener("click", () => {
+    if (!isMode) {
+        document.body.style.backgroundColor = "grey"
+        tableElem.style.boxShadow = `
+  0 0 5px rgba(255, 255, 255, 0.3),
+  0 0 10px rgba(255, 255, 255, 0.4),
+  0 0 20px rgba(243, 255, 111, 0.5),
+  0 0 40px rgba(243, 255, 111, 0.6)
+`
+        icon.style.visibility = "visible"
+        icon.style.boxShadow = `
+  0 0 5px rgba(255, 255, 255, 0.3),
+  0 0 10px rgba(255, 255, 255, 0.4),
+  0 0 20px rgba(243, 255, 111, 0.5),
+  0 0 40px rgba(243, 255, 111, 0.6)
+`
+        icon2.style.visibility = "hidden"
+        btn.innerHTML = `<i class="fa-regular fa-sun"></i>`
+        isMode = true
+    } else {
+        document.body.style.backgroundColor = "white"
+        tableElem.style.boxShadow = "10px 10px 20px rgba(0, 0, 0, 0.5)"
+        icon.style.visibility = "hidden"
+        icon2.style.visibility = "visible"
+        icon2.style.visibility = "visible"
+        icon2.style.boxShadow = `
+  0 0 5px rgba(255, 255, 255, 0.3),
+  0 0 10px rgba(255, 255, 255, 0.4),
+  0 0 20px rgba(243, 255, 111, 0.5),
+  0 0 40px rgba(243, 255, 111, 0.6)
+`
+        btn.innerHTML = `<i class="fa-regular fa-moon"></i>`
+        isMode = false
     }
 })

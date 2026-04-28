@@ -32,6 +32,7 @@
       table {
         margin: auto;
         width: 40%;
+        box-shadow: 10px 10px 20px
       }
       button{
         width: 60px;
@@ -42,21 +43,28 @@
         border-radius: 20%;
         box-shadow: 10px 10px 20px;
       }
+      #moon{
+        visibility: hidden;
+      }
     </style>
   </head>
   <body>
-    <button><i class="fa-regular fa-moon"></i></button>
-    <table class="table">
+    <button><i class="fa-regular fa-moon "></i></button>
+    <div class="flex  gap-7.5">
+      <i class="fa-regular fa-moon my-auto text-[200px]" id="moon"></i>
+      <table class="table">
       <thead>
         <tr>
-          <th>NAME</th>
+          <th id="nameBtn">NAME <i class="fa-solid fa-sort"></i></i></th>
           <th>TICKER</th>
           <th>VALUE</th>
-          <th>CHANGE</th>
+          <th id="changeBtn">CHANGE <i class="fa-solid fa-sort"></i></th>
         </tr>
       </thead>
       <tbody></tbody>
     </table>
+    <i class="fa-regular fa-sun my-auto text-[200px]" id="sun"></i>
+    </div>
     <script src="./main.js"></script>
   </body>
 </html>
